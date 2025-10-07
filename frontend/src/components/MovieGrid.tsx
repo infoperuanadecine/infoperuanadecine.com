@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import './MovieGrid.css';
 
 interface Movie {
@@ -8,77 +7,61 @@ interface Movie {
   year: number;
   poster_url: string;
   google_drive_link: string;
+  letterboxd_url?: string;
+  runtime?: number;
   genres: string[];
   description: string;
+  available?: boolean;
+  status?: string;
 }
 
-const MovieGrid: React.FC = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState('');
+interface MovieGridProps {
+  movies: Movie[];
+}
 
-  useEffect(() => {
-    fetchMovies();
-  }, []);
-
-  const fetchMovies = async () => {
-    try {
-      // Use environment variable for API URL or fallback to relative path
-      const apiUrl = process.env.REACT_APP_API_URL || '';
-      const response = await axios.get(`${apiUrl}/api/movies`);
-      setMovies(response.data);
-    } catch (error) {
-      console.error('Error fetching movies:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const filteredMovies = movies.filter(movie =>
-    movie.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  if (loading) {
-    return <div className="loading">Loading movies...</div>;
-  }
+const MovieGrid: React.FC<MovieGridProps> = ({ movies }) => {
 
   return (
     <div className="movie-grid-container">
-      <div className="search-section">
-        <input
-          type="text"
-          placeholder="Search movies..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="search-input"
-        />
-      </div>
-      
       <div className="movie-grid">
-        {filteredMovies.map(movie => (
+        {movies.map(movie => (
           <div key={movie._id} className="movie-card">
-            <img
-              src={movie.poster_url}
-              alt={movie.title}
-              className="movie-poster"
-              loading="lazy"
-            />
+            {movie.poster_url && movie.poster_url !== "https://image.tmdb.org/t/p/w500/placeholder.jpg" ? (
+              <img
+                src={movie.poster_url}
+                alt={movie.title}
+                className="movie-poster"
+                loading="lazy"
+              />
+            ) : (
+              <div className="movie-poster">
+                {movie.title}
+              </div>
+            )}
             <div className="movie-info">
               <h3 className="movie-title">{movie.title}</h3>
-              <p className="movie-year">{movie.year}</p>
-              <div className="movie-genres">
-                {movie.genres.map(genre => (
-                  <span key={genre} className="genre-tag">{genre}</span>
-                ))}
+              <div className="movie-year-runtime">
+                <span className="movie-year">{movie.year}</span>
+                <span className="runtime-tag">⏱️ {movie.runtime ? `${movie.runtime} min` : 'N/A'}</span>
               </div>
-              <a
-                href={movie.google_drive_link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="download-btn"
-              >
-                Descargar Película
-              </a>
+              <div className="movie-buttons">
+                <a
+                  href={movie.google_drive_link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="download-btn"
+                >
+                  📥 Descargar
+                </a>
+                <a
+                  href={movie.letterboxd_url || `https://letterboxd.com/search/${encodeURIComponent(movie.title)}/`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="letterboxd-btn"
+                >
+                  📽️ Letterboxd
+                </a>
+              </div>
             </div>
           </div>
         ))}

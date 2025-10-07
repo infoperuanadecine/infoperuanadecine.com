@@ -2,14 +2,22 @@
   "buildCommand": "cd frontend && npm run build",
   "outputDirectory": "frontend/build",
   "functions": {
-    "api/**/*.ts": {
-      "runtime": "@vercel/node@3.0.0"
+    "api/**/*.js": {
+      "runtime": "@vercel/node@3.0.0",
+      "maxDuration": 10
     }
   },
   "rewrites": [
     {
       "source": "/api/movies/:movieId",
       "destination": "/api/movies/[movieId]"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
     }
-  ]
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
 }
