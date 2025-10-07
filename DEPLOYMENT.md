@@ -1,23 +1,22 @@
-# Deployment Guide for Info Peruana de Cine 🇵🇪
+# Production Deployment Guide 🇵🇪
 
-## 🚀 Deploy to Vercel (Free Hosting)
+## 🚀 Deploy to Vercel with Custom Domain
 
-### Step 1: Install Vercel CLI
+### 1. Deploy to Vercel
 ```bash
-npm install -g vercel
+vercel login  # Use: inforealdecine@proton.me
+vercel --prod
 ```
 
-### Step 2: Login to Vercel
-```bash
-vercel login
+### 2. Configure Environment Variables
+In Vercel dashboard, add:
 ```
-- Use your GitHub account or create a new Vercel account
-- Choose anonymous email if desired
+MONGODB_URI=mongodb+srv://infoperuana-user:Df5TtUm6zrPA@infoperuana-cluster.4q69lkk.mongodb.net/?retryWrites=true&w=majority&appName=infoperuana-cluster
+TMDB_API_KEY=dec9b4176986e6d1333c7b017cca6488
+NODE_ENV=production
+```
 
-### Step 3: Deploy the Project
-```bash
-# Navigate to your project
-cd c:\Users\santiago\Documents\infoperuanadecine
+### 3. Add Custom Domain
 
 # Deploy to Vercel
 vercel

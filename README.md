@@ -1,6 +1,6 @@
 # Info Peruana de Cine 🇵🇪
 
-Un sitio web de descarga de películas peruanas similar a inforealdecine.com que permite a los usuarios navegar y obtener enlaces de descarga de Google Drive para películas peruanas.
+Un sitio web profesional para descargar películas peruanas auténticas.
 
 ## Features
 
