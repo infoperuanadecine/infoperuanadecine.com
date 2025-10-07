@@ -1,0 +1,9 @@
+{
+  "name": "Info Peruana de Cine - Development",
+  "type": "module",
+  "scripts": {
+    "check-env": "node scripts/check-environment.js",
+    "setup-dev": "node scripts/setup-development.js",
+    "start": "npm run dev:full"
+  }
+}

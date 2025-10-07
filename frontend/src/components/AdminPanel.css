@@ -1,0 +1,138 @@
+.admin-panel {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.admin-panel h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #D91E18;
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.movie-form {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 3rem;
+  box-shadow: 0 8px 32px rgba(217, 30, 24, 0.15);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(217, 30, 24, 0.1);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #2c2c2c;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: #2c2c2c;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #D91E18;
+  box-shadow: 0 0 0 3px rgba(217, 30, 24, 0.1);
+}
+
+.form-group button {
+  padding: 0.8rem 1.5rem;
+  background: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.form-group button:hover {
+  background: #357abd;
+}
+
+.form-group button:disabled {
+  background: #666;
+  cursor: not-allowed;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #D91E18 0%, #B71C1C 100%);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+}
+
+.movies-list {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(217, 30, 24, 0.15);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(217, 30, 24, 0.1);
+}
+
+.movies-list h3 {
+  margin-bottom: 1rem;
+  color: #D91E18;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.movie-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(217, 30, 24, 0.2);
+  color: #2c2c2c;
+  font-weight: 500;
+}
+
+.movie-item:last-child {
+  border-bottom: none;
+}
+
+.movie-item img {
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .admin-panel {
+    padding: 1rem;
+  }
+  
+  .movie-form {
+    padding: 1.5rem;
+  }
+}
